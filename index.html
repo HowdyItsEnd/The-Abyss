@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Title Here</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div id="site-header"></div>
+
+<section class="hero">
+  <div class="hero-inner">
+    <span class="hero-eyebrow">sampletext</span>
+    <h1 id="hero-title">Something, idrk</h1>
+    <p class="hero-tagline" id="hero-tagline">sample text</p>
+  </div>
+</section>
+
+<p class="intro-block" id="intro-block"></p>
+
+<main class="wrap">
+  <div class="section-heading"><h2>Categories</h2></div>
+  <div class="atlas-grid" id="atlas-grid"></div>
+</main>
+
+<div id="site-footer"></div>
+
+<script src="js/icons.js"></script>
+<script src="js/data/data.js"></script>
+<script src="js/render.js"></script>
+<script>
+  loadWorldData();
+  document.title = window.WORLD_CONFIG.siteName;
+  document.getElementById("hero-title").textContent = window.WORLD_CONFIG.siteName;
+  document.getElementById("hero-tagline").textContent = window.WORLD_CONFIG.tagline;
+  const introEl = document.getElementById("intro-block");
+  if (window.WORLD_CONFIG.intro) {
+    introEl.textContent = window.WORLD_CONFIG.intro;
+  } else {
+    introEl.style.display = "none";
+  }
+  mountHeader(null);
+  document.getElementById("atlas-grid").innerHTML = renderCollectionsGrid();
+  mountFooter();
+</script>
+</body>
+</html>
